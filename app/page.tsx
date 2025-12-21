@@ -49,47 +49,61 @@ function ChallengeModal({ isOpen, onClose, onSuccess }: ChallengeModalProps) {
     };
 
     useEffect(() => {
-        if (!isOpen) {
-            resetChallenge();
-        }
+        if (!isOpen) resetChallenge();
     }, [isOpen]);
 
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={onClose}>
+        <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm px-3 sm:px-6"
+            onClick={onClose}
+        >
             <div
-                className="relative w-full max-w-2xl bg-black border-4 border-pink-500 rounded-2xl p-6 sm:p-8 shadow-2xl"
+                className="relative w-full max-w-xl sm:max-w-2xl max-h-[90vh] overflow-y-auto scrollbar-cyber bg-black border-4 border-pink-500 rounded-2xl p-4 sm:p-8 shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
             >
-                <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-pink-400 transition-colors">
-                    <X size={28} />
+
+                <button
+                    onClick={onClose}
+                    className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-pink-400 transition-colors"
+                >
+                    <X size={24} className="sm:hidden" />
+                    <X size={28} className="hidden sm:block" />
                 </button>
 
                 <div className="text-center mb-6">
-                    <Terminal className="mx-auto mb-4 text-cyan-400" size={64} />
-                    <h2 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400 mb-2">
+                    <Terminal className="mx-auto mb-3 sm:mb-4 text-cyan-400" size={48} />
+                    <h2 className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400 mb-2">
                         HACKING CHALLENGE
                     </h2>
-                    <p className="text-gray-400 text-sm sm:text-base">Prove your skills before enrolling!</p>
+                    <p className="text-gray-400 text-xs sm:text-base">
+                        Prove your skills before enrolling!
+                    </p>
                 </div>
 
                 {!success ? (
                     <>
-                        <div className="bg-slate-900/50 border-2 border-purple-500 rounded-lg p-6 mb-6">
+                        <div className="bg-slate-900/50 border-2 border-purple-500 rounded-lg p-4 sm:p-6 mb-6">
                             <div className="flex items-start gap-3 mb-4">
-                                <AlertCircle className="text-yellow-400 flex-shrink-0 mt-1" size={24} />
+                                <AlertCircle className="text-yellow-400 flex-shrink-0 mt-1" size={22} />
                                 <div>
-                                    <p className="text-white font-bold mb-2">MISSION BRIEFING:</p>
-                                    <p className="text-gray-300 text-sm sm:text-base">
+                                    <p className="text-white font-bold mb-1 text-sm sm:text-base">
+                                        MISSION BRIEFING:
+                                    </p>
+                                    <p className="text-gray-300 text-xs sm:text-base">
                                         An encrypted message has been intercepted. Decode it to unlock enrollment.
                                     </p>
                                 </div>
                             </div>
 
-                            <div className="bg-black/50 border-2 border-cyan-400 rounded-lg p-4 font-mono">
-                                <div className="text-cyan-400 text-xs mb-2">ENCRYPTED MESSAGE:</div>
-                                <div className="text-pink-400 text-lg sm:text-xl break-all">{encodedMessage}</div>
+                            <div className="bg-black/50 border-2 border-cyan-400 rounded-lg p-3 sm:p-4 font-mono">
+                                <div className="text-cyan-400 text-xs mb-2">
+                                    ENCRYPTED MESSAGE:
+                                </div>
+                                <div className="text-pink-400 text-base sm:text-xl break-all">
+                                    {encodedMessage}
+                                </div>
                             </div>
                         </div>
 
@@ -102,15 +116,15 @@ function ChallengeModal({ isOpen, onClose, onSuccess }: ChallengeModalProps) {
                                     type="text"
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
-                                    className="w-full px-4 py-3 bg-black border-2 border-purple-500 rounded-lg text-white focus:border-cyan-400 focus:outline-none transition-colors font-mono"
+                                    className="w-full px-3 sm:px-4 py-3 bg-black border-2 border-purple-500 rounded-lg text-white focus:border-cyan-400 focus:outline-none transition-colors font-mono text-sm sm:text-base"
                                     placeholder="Type your answer here..."
                                     autoFocus
                                 />
                             </div>
 
                             {error && (
-                                <div className="flex items-center gap-2 text-red-400 text-sm bg-red-500/10 border-2 border-red-500 rounded-lg p-3">
-                                    <AlertCircle size={20} />
+                                <div className="flex items-center gap-2 text-red-400 text-xs sm:text-sm bg-red-500/10 border-2 border-red-500 rounded-lg p-3">
+                                    <AlertCircle size={18} />
                                     <span>{error}</span>
                                 </div>
                             )}
@@ -118,7 +132,7 @@ function ChallengeModal({ isOpen, onClose, onSuccess }: ChallengeModalProps) {
                             <div className="flex flex-col sm:flex-row gap-3">
                                 <button
                                     type="submit"
-                                    className="flex-1 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg font-black border-2 border-pink-400 hover:scale-105 transition-transform"
+                                    className="w-full sm:flex-1 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg font-black border-2 border-pink-400 hover:scale-105 transition-transform text-sm sm:text-base"
                                 >
                                     SUBMIT ANSWER
                                 </button>
@@ -126,10 +140,10 @@ function ChallengeModal({ isOpen, onClose, onSuccess }: ChallengeModalProps) {
                                 <button
                                     type="button"
                                     onClick={() => setShowHint(Math.min(showHint + 1, hints.length))}
-                                    className="px-6 py-3 bg-black border-2 border-yellow-400 rounded-lg font-bold text-yellow-400 hover:bg-yellow-400/10 transition-colors flex items-center justify-center gap-2"
+                                    className="w-full sm:w-auto px-6 py-3 bg-black border-2 border-yellow-400 rounded-lg font-bold text-yellow-400 hover:bg-yellow-400/10 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
                                     disabled={showHint >= hints.length}
                                 >
-                                    <Lightbulb size={20} />
+                                    <Lightbulb size={18} />
                                     HINT {showHint < hints.length ? `(${showHint}/${hints.length})` : '(MAX)'}
                                 </button>
                             </div>
@@ -138,24 +152,32 @@ function ChallengeModal({ isOpen, onClose, onSuccess }: ChallengeModalProps) {
                         {showHint > 0 && (
                             <div className="mt-4 bg-yellow-500/10 border-2 border-yellow-400 rounded-lg p-4">
                                 <div className="flex items-start gap-3">
-                                    <Lightbulb className="text-yellow-400 flex-shrink-0 mt-1" size={20} />
+                                    <Lightbulb className="text-yellow-400 flex-shrink-0 mt-1" size={18} />
                                     <div>
-                                        <div className="text-yellow-400 font-bold text-sm mb-1">HINT {showHint}:</div>
-                                        <p className="text-gray-300 text-sm">{hints[showHint - 1]}</p>
+                                        <div className="text-yellow-400 font-bold text-xs sm:text-sm mb-1">
+                                            HINT {showHint}:
+                                        </div>
+                                        <p className="text-gray-300 text-xs sm:text-sm">
+                                            {hints[showHint - 1]}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         )}
                     </>
                 ) : (
-                    <div className="text-center py-8">
-                        <CheckCircle className="mx-auto mb-4 text-green-400" size={80} />
-                        <h3 className="text-3xl font-black text-green-400 mb-2">ACCESS GRANTED!</h3>
-                        <p className="text-gray-300 mb-4">Redirecting to enrollment...</p>
+                    <div className="text-center py-6 sm:py-8">
+                        <CheckCircle className="mx-auto mb-4 text-green-400" size={64} />
+                        <h3 className="text-2xl sm:text-3xl font-black text-green-400 mb-2">
+                            ACCESS GRANTED!
+                        </h3>
+                        <p className="text-gray-300 mb-4 text-sm sm:text-base">
+                            Redirecting to enrollment...
+                        </p>
                         <div className="flex items-center justify-center gap-2">
-                            <div className="w-2 h-2 bg-green-400 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                            <div className="w-2 h-2 bg-green-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-bounce" />
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-bounce [animation-delay:0.1s]" />
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-bounce [animation-delay:0.2s]" />
                         </div>
                     </div>
                 )}
@@ -428,7 +450,7 @@ export default function CyberpunkLanding() {
             <div id="projects" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
                 <div className="text-center mb-12 sm:mb-16">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">
-                        WHAT YOU'LL BUILD
+                        WHAT YOU&lsquo;LL BUILD
                     </h2>
                     <p className="text-gray-400 text-lg sm:text-xl font-bold">// REAL PORTFOLIO PROJECTS</p>
                 </div>
