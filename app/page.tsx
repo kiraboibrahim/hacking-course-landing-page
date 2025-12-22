@@ -555,9 +555,12 @@ function InstructorSection() {
                         </div>
 
                         <div className="md:col-span-3 flex flex-col justify-center">
-                            <h3 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400 mb-4">
+                            <h3 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400 mb-2">
                                 IBRAHIM KIRABO S.
                             </h3>
+                            <p className="text-cyan-400 font-bold text-lg sm:text-xl mb-4 flex items-center gap-2">
+                                <span className="text-gray-500">//</span> aka <span className="text-pink-400">HARMLESS</span>
+                            </p>
 
                             <div className="space-y-3 mb-6">
                                 <div className="flex items-start gap-3">
