@@ -35,7 +35,7 @@ function ChallengeModal({ isOpen, onClose, onSuccess }: ChallengeModalProps) {
             setSuccess(true);
             setError('');
             setTimeout(() => {
-                onSuccess('https://wa.me/256709645302?text=I%20solved%20the%20challenge!%20Ready%20to%20enroll.');
+                onSuccess('https://chat.whatsapp.com/LBScjzzvhVz5QA8n68olgG');
             }, 1500);
         } else {
             setError('Incorrect! Try again or use a hint.');
@@ -51,6 +51,7 @@ function ChallengeModal({ isOpen, onClose, onSuccess }: ChallengeModalProps) {
     };
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (!isOpen) resetChallenge();
     }, [isOpen]);
 
@@ -588,7 +589,7 @@ function InstructorSection() {
                                     <Calendar className="text-cyan-400 flex-shrink-0" size={24} />
                                     <div>
                                         <div className="text-cyan-400 font-black text-sm sm:text-base">COURSE STARTS</div>
-                                        <div className="text-white font-bold text-lg sm:text-xl">February 2nd, 2026</div>
+                                        <div className="text-white font-bold text-lg sm:text-xl">February 9<sup>th</sup>, 2026</div>
                                     </div>
                                 </div>
                             </div>
