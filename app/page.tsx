@@ -286,7 +286,7 @@ function HeroSection({ onEnrollClick }: { onEnrollClick: () => void }) {
                         >
                             <span className="flex items-center justify-center gap-3">
                                 <Phone size={24} className="animate-bounce" />
-                                HACK THE SYSTEM
+                                ENROLL NOW
                                 <Zap size={24} />
                             </span>
                         </button>
