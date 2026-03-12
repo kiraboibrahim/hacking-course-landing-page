@@ -231,12 +231,14 @@ function Navigation({ scrolled, onEnrollClick }: { scrolled: boolean; onEnrollCl
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 border border-green-400 rounded flex items-center justify-center">
-                            <Terminal size={14} className="text-green-400" />
-                        </div>
-                        <span className="font-mono font-black text-white text-sm tracking-widest">CODERS<span className="text-green-400">_</span>CLUB</span>
-                    </div>
+                    <Image
+                        src="/logo-04-nav-dark.png"
+                        alt="Harmless Hacking"
+                        width={280}
+                        height={50}
+                        className="h-8 w-auto mix-blend-screen"
+                        priority
+                    />
 
                     {/* Desktop nav */}
                     <div className="hidden md:flex items-center gap-8">
